@@ -1,0 +1,126 @@
+  {% extends 'base.html' %}
+  {% load static %}
+{% block content %}
+<!-- Start -->
+	<!-- link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=c863b7da7e72b0e94c16b81c38293467">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+	<!-- link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"-->
+	<!-- link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap.min.css"-->
+
+	<!-- script type="text/javascript" src="/media/js/site.js?_=a64810efc82bfd3b645784011efa5963"></script>
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=extensions%2Fbuttons%2Fexamples%2Fstyling%2Fbootstrap.html" async></script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
+	<!--script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script-->
+  <script>
+  function showDialog(id){
+    var dialog = document.querySelector('#mdl-dialog-'+id);
+    var showDialogButton = document.querySelector('#show-dialog-'+id);
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+      dialog.showModal();
+	    dialog.querySelector('.mdl-button').addEventListener('click', function() {
+dialog.close();
+    });
+  }
+  </script>
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Incident</th>
+                <th>Engineer</th>
+                <th>AUdit By</th>
+                <th>Audit Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+{% for user in data %}
+    <tr>
+                <td>{{user.incident}}</td>
+                <td>{{user.engineerName}}</td>
+                <td>{{user.auditedBy}}</td>
+                <td>{{user.auditDate|date:'D, d M,Y'}}</td>
+                <!-- td>{{user.incidentManager.comments}}</td-->
+                <td><button id="show-dialog" type="button" class="btn btn-info btn-lg" onclick="showDialog({{ forloop.counter }})">Details</button>
+  <dialog id="mdl-dialog-{{ forloop.counter }}" class="mdl-dialog">
+    <h4 class="mdl-dialog__title">Incident :{{user.incident}}</h4>
+    <div class="mdl-dialog__content">
+    <div class="mdc-card">
+                  <h6 class="card-title"></h6>
+                  <div class="template-demo">
+                    <div class="mdc-layout-grid__inner">
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field">
+                          <input type="month" class="mdc-text-field__input" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                        </div>
+                      </div>
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field mdc-text-field--outlined">
+                          <input class="mdc-text-field__input" id="text-field-hero-input">
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                          <i class="material-icons mdc-text-field__icon">favorite</i>
+                          <input class="mdc-text-field__input" id="text-field-hero-input">
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon">
+                          <i class="material-icons mdc-text-field__icon">visibility</i>
+                          <input class="mdc-text-field__input" id="text-field-hero-input">
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button">Agree</button>
+      <button type="button" class="mdl-button close">Disagree</button>
+    </div>
+  </dialog>
+                </td>
+            </tr>
+{% endfor %}
+      </tbody>
+    </table>
+    {% endblock %}      

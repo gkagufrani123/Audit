@@ -1,0 +1,306 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Support Quality Audit </title>
+  <link rel="stylesheet" href="https://unpkg.com/x-data-spreadsheet@1.0.13/dist/xspreadsheet.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/jvectormap/jquery-jvectormap.css' %}">
+  <!-- End plugin css for this page -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="{% static 'assets/css/demo/style.css' %}">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+</head>
+<body>
+<script src="{% static 'assets/js/preloader.js' %}"></script>
+  <div class="body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
+      <div class="mdc-drawer__header">
+        <a href="index" class="brand-logo">
+          <img src="{% static 'assets/images/logo.svg' %}" alt="logo">
+        </a>
+      </div>
+      <div class="mdc-drawer__content">
+        <div class="user-info">
+          <p class="name">Mufakham Mohiuddin</p>
+          <p class="email">mohammedstays@gmail.com </p>
+        </div>
+        <div class="mdc-list-group">
+          <nav class="mdc-list mdc-drawer-menu">
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="/">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">home</i>
+                Dashboard
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="/pages/forms/basic-forms.html">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">track_changes</i>
+                Audit List
+              </a>
+            </div>
+            <!--div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="ui-sub-menu">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+                UI Features
+                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+              </a>
+              <div class="mdc-expansion-panel" id="ui-sub-menu">
+                <nav class="mdc-list mdc-drawer-submenu">
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/ui-features/buttons.html">
+                      Buttons
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/ui-features/typography.html">
+                      Typography
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="pages/tables/basic-tables.html">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i>
+                Tables
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="pages/charts/chartjs.html">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pie_chart_outlined</i>
+                Charts
+              </a>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i>
+                Sample Pages
+                <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+              </a>
+              <div class="mdc-expansion-panel" id="sample-page-submenu">
+                <nav class="mdc-list mdc-drawer-submenu">
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
+                      Blank Page
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/403.html">
+                      403
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/404.html">
+                      404
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/500.html">
+                      500
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/505.html">
+                      505
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/login.html">
+                      Login
+                    </a>
+                  </div>
+                  <div class="mdc-list-item mdc-drawer-item">
+                    <a class="mdc-drawer-link" href="pages/samples/register.html">
+                      Register
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <div class="mdc-list-item mdc-drawer-item">
+              <a class="mdc-drawer-link" href="https://www.bootstrapdash.com/demo/material-admin-free/jquery/documentation/documentation.html" target="_blank">
+                <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i>
+                Documentation
+              </a>
+            </div>
+        -->  </nav>
+        </div>
+        <div class="profile-actions">
+          <a href="javascript:;">Settings</a>
+          <span class="divider"></span>
+          <a href="javascript:;">Logout</a>
+        </div>
+      </div>
+    </aside>
+    <!-- partial -->
+    <div class="main-wrapper mdc-drawer-app-content">
+      <!-- partial:partials/_navbar.html -->
+      <header class="mdc-top-app-bar">
+      <form method="post" action="/fetch-data">{% csrf_token %}
+        <div class="mdc-top-app-bar__row">
+          <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
+            <!-- span class="mdc-top-app-bar__title">Greetings Micky!</span-->
+             <div class="template-demo">
+                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
+                      <input type="hidden" name="team">
+                      <i class="mdc-select__dropdown-icon"></i>
+                      <div class="mdc-select__selected-text"></div>
+                      <div class="mdc-select__menu mdc-menu-surface demo-width-class"  onmouseout="resetData()">
+                        <ul class="mdc-list">
+                          <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                          </li>
+                          {% for mykey in tList %}
+
+      <li class="mdc-list-item" data-value="{{ mykey }}" >
+                             {{ mykey }}
+                          </li>
+
+{% endfor %}
+                        
+                        </ul>
+                      </div>
+                      <span class="mdc-floating-label">Pick a Team</span>
+                      <div class="mdc-line-ripple"></div>
+                    </div>
+                  </div>
+             <div class="template-demo">
+                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
+                      <input type="hidden" name="member">
+                      <i class="mdc-select__dropdown-icon"></i>
+                      <div class="mdc-select__selected-text" id="mdc-select__selected-text_id"></div>
+                      <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                        <ul class="mdc-list" id="memberList">
+                          <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                          </li>
+
+                        
+                        </ul>
+                      </div>
+                      <span class="mdc-floating-label">Pick a Member</span>
+                      <div class="mdc-line-ripple"></div>
+                    </div>
+                  </div>
+             
+                                       <div class="mdc-text-field">
+                          <input type="week" class="mdc-text-field__input" name="week" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label">Audit Week</label>
+                        </div>
+                          <div class="template-demo  mb-3 ml-2">
+                          <button type="submit" class="mdc-button mdc-button--raised">
+                       <i class="material-icons mdc-button__icon">get_app</i>Fetch
+                    </button></div>
+            <!--div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
+              <i class="material-icons mdc-text-field__icon">search</i>
+              <input class="mdc-text-field__input" id="text-field-hero-input">
+              <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                  <label for="text-field-hero-input" class="mdc-floating-label">Search..</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+              </div>
+            </div-->
+          </div>
+          </div>
+          </form>
+      </header>
+      <!-- partial -->
+      <div class="page-wrapper mdc-toolbar-fixed-adjust">
+        <main class="content-wrapper">
+           {% block content %}
+  {% endblock %}
+         </main>
+        <!-- partial:partials/_footer.html -->
+        <footer>
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                <span class="tx-14">Please Copyright © 2019 <a target="_blank">Muffakham</a>. All rights reserved.</span>
+              </div>
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex justify-content-end">
+                <div class="d-flex align-items-center">
+                  <a href="">Documentation</a>
+                  <span class="vertical-divider"></span>
+                  <a href="">FAQ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+  <script>
+  
+  var prev='';
+  function getMembres(k){
+	  alist=[]
+	  {% for key,value in tList.items %}alist['{{key}}']='{{value }}';	  
+	  {% endfor %}	   
+	  populateMembers(alist[k]);
+  }
+  function populateMembers(obj){
+	  kbj=obj.split("|");
+	  document.getElementById("memberList").innerHTML = "";
+	  document.getElementsByName("member").value="";
+	  document.getElementById("mdc-select__selected-text_id").innerHTML = "";
+	  
+	  
+	  ul=document.getElementById("memberList");	  
+	  for(var i=0;i<kbj.length;i++){
+		  if(kbj[i]!=''){
+		  var li = document.createElement("li");
+		  li.appendChild(document.createTextNode(kbj[i]));
+		  li.setAttribute("class", "mdc-list-item");
+		  li.setAttribute("data-value", kbj[i]);
+		  li.setAttribute("tabindex", "-1");
+		  ul.appendChild(li);
+		  }
+	  }
+	  
+  }
+  function resetData(){
+	  k = document.getElementsByName("team");
+	  if(k[0].value!='')
+		  if(prev!=k[0].value){
+	  		//console.log(k[0].value);
+	  		getMembres(k[0].value);
+	  		prev = k[0].value
+		  }
+  }
+  </script>
+  <!-- plugins:js -->
+  <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="{% static 'assets/vendors/chartjs/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
+  <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{% static 'assets/js/material.js' %}"></script>
+  <script src="{% static 'assets/js/misc.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'assets/js/dashboard.js' %}"></script>
+  <!-- End custom js for this page-->
+</body>
+</html> 
