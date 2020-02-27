@@ -24,7 +24,7 @@ def lookup(d, key):
 def getExcelData(form):
     data=[]
     
-    workbook = xlrd.open_workbook('/home/abed/Downloads/Mohammed_QA_Jan.xlsx')
+    workbook = xlrd.open_workbook('/home/arshad/Downloads/Mohammed_QA_Jan.xlsx')
     worksheet = workbook.sheet_by_name('Sheet2')
     keys = [v.value for v in worksheet.row(1)]
     for row_number in range(worksheet.nrows):
