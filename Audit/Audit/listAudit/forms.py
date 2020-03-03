@@ -6,4 +6,4 @@ class QueryForm(forms.Form):
     weekStart = forms.CharField(widget=forms.HiddenInput())
     weekEnd = forms.CharField(widget=forms.HiddenInput())
     class Meta:
-        fields = ('team', 'member','week')
+        fields = ('team', 'member','weekStart','weekEnd')

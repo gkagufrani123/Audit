@@ -166,18 +166,16 @@
                           <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
                           </li>
                           {% for mykey in tList %}
-
       <li class="mdc-list-item" data-value="{{ mykey }}" >
                              {{ mykey }}
                           </li>
-
 {% endfor %}
-                        
                         </ul>
                       </div>
-                      <span class="mdc-floating-label">Pick a Team</span>
+                      <span class="mdc-floating-label"> Pick a Team</span>
                       <div class="mdc-line-ripple"></div>
                     </div>
+                    {{data1.team}}
                   </div>
              <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
@@ -187,26 +185,30 @@
                       <div class="mdc-select__menu mdc-menu-surface demo-width-class">
                         <ul class="mdc-list" id="memberList">
                           <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
-                          </li>
-
-                        
+                          </li>                        
                         </ul>
                       </div>
-                      <span class="mdc-floating-label">Pick a Member</span>
+                      <span class="mdc-floating-label"> Pick a Member</span>
                       <div class="mdc-line-ripple"></div>
                     </div>
+                    <div>
+                    {{data1.member}}
                   </div>
-             
-                                       <div class="mdc-text-field mr-2">
+                  </div>
+                                        <div class="mdc-text-field mr-2">
                           <input type="week" class="mdc-text-field__input" name="weekStart" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label">Audit Start Week</label>
-                        </div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Audit Start Week</label>
+                          {{data1.weekStart}}
+                  </div>  
                                  <div class="mdc-text-field mr-2">
                           <input type="week" class="mdc-text-field__input" name="weekEnd" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label">Audit End Week</label>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Audit End Week</label>
+                          {{data1.weekEnd}}
                         </div>
+                        
+
                           <div class="template-demo  mb-3 ml-2">
                           <button type="submit" class="mdc-button mdc-button--raised">
                        <i class="material-icons mdc-button__icon">get_app</i>Fetch

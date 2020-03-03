@@ -38,11 +38,12 @@ dialog.close();
         <thead>
             <tr>
                 <th>Incident</th>
-                <th>Engineer</th>
+                <th>Engineer{{data1.team}}</th>
                 <th>AUdit By</th>
                 <th>Audit Date</th>
                 <th>Action</th>
             </tr>
+            
         </thead>
         <tbody>
             
@@ -60,240 +61,410 @@ dialog.close();
     <div class="mdc-card">
                   <h6 class="card-title"></h6>
                   <div class="template-demo">
-    <div class="row">
-                    <div class="col-md-3">
-                          <div class="row">
-                          <div class="col-md-12 text-left">Details</div>
-                                        <div class="col-md-4">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incident}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Incident</label>
-                        </div>
-                      </div>
-                          </div>              
-                                        
-                                        <div class="col-md-8">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.engineerName}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Engineer Name</label>
-                        </div>
-                      </div>
-                           </div>             
-                                        
-                                        
-             <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.auditedBy}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >auditedBy</label>
-                        </div>
-                      </div>
-                       </div>     
-                                        
-                                         <div class="col-md-5">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.auditDate}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >auditDate</label>
-                        </div>
-                      </div>
-                        </div>                   
-                                                                      
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                    <div class="col-md-12 text-left">holdTime</div>
+              
+           <div class="mdc-layout-grid ">
+            <div class="mdc-layout-grid__inner">
+              <!--div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>-->
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+             
+                <div class="mdc-card p-0">
+                               <div class="col-md-12 text-left">Details</div>
+                
+                  <form>
+                    <div class="mdc-layout-grid">
                     
-                              
-                     <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.yesNo}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >acheived</label>
-                        </div>
-                      </div>
-                        </div>                           
-                        <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div>         
-                    
-                    
-                    <div class="col-md-12 text-left">CorrectCI/Sub Cat</div>                
-                    <div class="col-md-4">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.yesNo}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >acheived</label>
-                        </div>
-                      </div>
-                        </div>         
-                         <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div>        
-                   
-                   
-                    <div class="col-md-12 text-left">KB Used</div>                
-                    <div class="col-md-10">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >scopeOfSOPKBCreation</label>
-                        </div>
-                      </div>
-                        </div>         
-                    
-      
-                    </div>
-                    
-                    
-                    </div>
-                    <div class="col-md-9">
-                    <div class="row">
-                                        <div class="col-md-2">Greeting/AcknowledgementEmpathy</div>
-                                       
-                                         <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.YesNoPartial}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Acheived</label>    
-                        </div>
-                      </div>
-                        </div>       
-                                <div class="col-md-3">  <div class="mdc-layout-grid__cell strreadonlyetch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                       
-                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.comment}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Comments</label>
-                        </div>
-                      </div>
-                        </div>    
-    
-                              <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div>                  
-                    <div class="col-md-2">OLA Breach(Response-5,update-10&Resulation-10)</div><br>
-                     <div class="col-md-2">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.yesNo}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Acheived</label>
-                        </div>
-                      </div>
-                        </div>       
-                    <div class="col-md-2">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div> 
-                   <div class="col-md-2">Comments</div><br>
-                     <div class="col-md-2">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.comments}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                        </div>
-                      </div>
-                        </div>
-                        <div class="col-md-1">Incident Manager</div>
-                         <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop ">
-                        <div class="mdc-text-field ">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.yesNoPartial}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input text-left" class="mdc-floating-label" >Acheived</label>
-                        </div>
-                      </div>
-                        </div>
-                            
-                         <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.comments}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Comments</label>
-                        </div>
-                      </div>
-                        </div>      
-                         <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-ireadonlynput" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div>      
-                        
-                        
-                         <div class="col-md-1">Resolution Notes(Issue desk ,Resolution Devided)</div>
-                         <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.yesNoPartial}}"  readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Acheived</label>
-                        </div>
-                      </div>
-                        </div>      
-                        
-                         <div class="col-md-3">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.comments}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Comments</label>
-                        </div>
-                      </div>
-                        </div>      
-                        
-                         <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                        <div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.score}}" readonly style="width:300px" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Score</label>
-                        </div>
-                      </div>
-                        </div>    
+                      <div class="mdc-layout-grid__inner">
+                      
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded"> 
                           
-                           <div class="col-md-1">  <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop"><div class="mdc-text-field">
-                          <input type="test" class="mdc-text-field__input" value="{{user.totalScore}}"   readonly style="width:300px" id="text-field-hero-input"> 
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label" >Total Score</label>
+                          <input type="test" class="mdc-text-field__input" value="{{user.incident}}" readonly >         
+                                             <div class="mdc-line-ripple"></div>
+                            
+                            <label for="text-field-hero-input" class="mdc-floating-label">Incident</label>
+                          </div>
                         </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.engineerName}}" readonly"> 
+                                                     <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">engineerName</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                                      <input type="test" class="mdc-text-field__input" value="{{user.auditedBy}}" readonly ">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">auditedBy</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.auditDate}}" readonly ">  
+                                                 <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">dateOfAudit</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
                       </div>
-                        </div>      
-                        
-                        
-                        
-                        
-                   
                     </div>
+                  </form>
+                </div>
+                
+                      <div class="mdc-card p-0">
+                  <div class="col-md-12 text-left">Greeting/Acknowledgement/Empathy</div>
+                      
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.YesNoPartial}}" readonly ">    
+                                                  <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                                                      <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.comment}}" readonly ">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                             <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.score}}" readonly ">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
                     </div>
+                  </form>
+                </div>
+                
+                        <div class="mdc-card p-0">
+                   <div class="col-md-12 text-left">IncidentManagement</div>
+                        
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                        
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.yesNoPartial}}" readonly ">       
+                                               <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.comments}}" readonly ">   
+                                                   <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.score}}" readonly ">    
+                                                  <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+                <div class="mdc-card p-0">
+                  <div class="col-md-12 text-left">ResolutionNotes(Issue desk, Resolution provided)</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                      
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.yesNoPartial}}"  readonly ">      
+                                                <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.comments}}" readonly ">   
+                                                   <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.score}}" readonly ">   
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+                        <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">HoldTime</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.yesNo}}" readonly "> 
+                                                     <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.score}}" readonly ">  
+                                                    <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                       
+                
+              </div>
+            </div>
+          </div>
+                          
+     
+              
 
-                    </div> 
                     </div>
+                               <div class="template-demo">
+                  
+              
+           <div class="mdc-layout-grid ">
+            <div class="mdc-layout-grid__inner">
+              <!--div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>-->
+              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
+             
+                       <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">OLABreach(Response-5,Update-10&Resolution-10)</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.yesNo}}" readonly ">   
+                                                   <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.score}}" readonly ">    
+                                                  <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                
+                
+                
+                
+            <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">CorrectCI subcat</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.yesNo}}" readonly">              
+                                        <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.score}}" readonly ">   
+                                                   <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div> 
+                
+                <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">KB Used</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly">   
+                                                   <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                            <input class="mdc-text-field__input" id="text-field-hero-input">
+                            <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div> 
+               <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">Comments</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                      
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.comments}}" readonly >      
+                                                <div class="mdc-line-ripple"></div>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+                
+                <div class="mdc-card p-0">
+                      <div class="col-md-12 text-left">TotalSCore</div>
+                  <form>
+                    <div class="mdc-layout-grid">
+                      <div class="mdc-layout-grid__inner">
+                       
+                      
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
+                          <input type="test" class="mdc-text-field__input" value="{{user.totalScore}}"   readonly ">   
+                                                    <div class="mdc-line-ripple"></div>
+                          </div>
+                        </div>
+                       
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                          <div class="mdc-form-field">
+                           
+                           
+                          </div>
+                        </div>
+ 
+                      </div>
+                    </div>
+                  </form>
+                </div>  
+                
+                
+                
+                
+                
+                
+                
+                 
+                </div>
+                </div>
+                </div>
+                </div>
                   </div>
                 </div>
               </div>

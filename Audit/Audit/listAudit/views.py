@@ -64,8 +64,10 @@ def fetchData(request):
     dat=[]
     if form.is_valid():
         dat=getExcelData(form)
+    #dat1=[] 
+    dat1=form.cleaned_data    
         #cat=json.dumps(dat) 
-    return render(request, "basic-forms.html", {'form':'active','tList':tList,'data':dat})
+    return render(request, "basic-forms.html", {'form':'active','tList':tList,'data':dat,'data1':dat1})
 def getTeam():
    workbook = xlrd.open_workbook(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/TeamInfo.xlsx')
    worksheet = workbook.sheet_by_name('Sheet1')
