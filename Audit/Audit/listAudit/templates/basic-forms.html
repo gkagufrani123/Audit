@@ -70,7 +70,6 @@ dialog.close();
                 <div class="mdc-card p-0">
                                <div class="col-md-12 text-left">Details</div>
                 
-                  <form>
                     <div class="mdc-layout-grid">
                     
                       <div class="mdc-layout-grid__inner">
@@ -86,19 +85,19 @@ dialog.close();
                         </div>
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.engineerName}}" readonly"> 
+                          <input type="test" class="mdc-text-field__input" value="{{user.engineerName}}" readonly> 
                                                      <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">engineerName</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                                                       <input type="test" class="mdc-text-field__input" value="{{user.auditedBy}}" readonly ">
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">auditedBy</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-7">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.auditDate}}" readonly ">  
                                                  <div class="mdc-line-ripple"></div>
@@ -114,37 +113,39 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                       <div class="mdc-card p-0">
                   <div class="col-md-12 text-left">Greeting/Acknowledgement/Empathy</div>
                       
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.YesNoPartial}}" readonly ">    
+                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.YesNoPartial}}" readonly >    
                                                   <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        
+                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                                      <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.comment}}" readonly ">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                             <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.score}}" readonly ">
+                             <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.score}}" readonly >
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">score</label>
                           </div>
                         </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
+                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
+                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.GeneralKnoledgeEmpathy.comment}}</textarea>              
+                                        <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comment</label>
+                          </div>
+                        </div> 
+                       
+                       
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-form-field">
                            
@@ -154,13 +155,11 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                         <div class="mdc-card p-0">
                    <div class="col-md-12 text-left">IncidentManagement</div>
                         
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                         
@@ -171,20 +170,24 @@ dialog.close();
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.comments}}" readonly ">   
-                                                   <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.score}}" readonly ">    
                                                   <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">score</label>
                           </div>
                         </div>
+                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
+                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
+                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.incidentManager.comments}}</textarea>              
+                                        <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comment</label>
+                          </div>
+                        </div> 
+                       
+                        
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-form-field">
                            
@@ -194,12 +197,10 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                 <div class="mdc-card p-0">
                   <div class="col-md-12 text-left">ResolutionNotes(Issue desk, Resolution provided)</div>
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                       
@@ -210,20 +211,22 @@ dialog.close();
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.comments}}" readonly ">   
-                                                   <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.score}}" readonly ">   
                             <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">score</label>
                           </div>
                         </div>
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
+                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
+                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.resolutionNotes.comments}}</textarea>              
+                                        <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
+                          </div>
+                        </div> 
+                      
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-form-field">
                            
@@ -233,23 +236,21 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                         <div class="mdc-card p-0">
                       <div class="col-md-12 text-left">HoldTime</div>
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.holdTime.yesNo}}" readonly "> 
                                                      <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.holdTime.score}}" readonly ">  
                                                     <div class="mdc-line-ripple"></div>
@@ -266,7 +267,6 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                 
@@ -303,7 +303,6 @@ dialog.close();
              
                        <div class="mdc-card p-0">
                       <div class="col-md-12 text-left">OLABreach(Response-5,Update-10&Resolution-10)</div>
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
@@ -314,7 +313,7 @@ dialog.close();
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.score}}" readonly ">    
                                                   <div class="mdc-line-ripple"></div>
@@ -331,7 +330,6 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>
                 
                 
@@ -339,20 +337,20 @@ dialog.close();
                 
             <div class="mdc-card p-0">
                       <div class="col-md-12 text-left">CorrectCI subcat</div>
-                  <form>
+
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.yesNo}}" readonly">              
+                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.yesNo}}" readonly>              
                                         <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
                           </div>
                         </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.score}}" readonly ">   
+                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.score}}" readonly>   
                                                    <div class="mdc-line-ripple"></div>
                             <label for="text-field-hero-input" class="mdc-floating-label">score</label>
                           </div>
@@ -367,54 +365,23 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div> 
                 
-                <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">KB Used</div>
-                  <form>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly">   
-                                                   <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                            <input class="mdc-text-field__input" id="text-field-hero-input">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                  </form>
-                </div> 
+               
                <div class="mdc-card p-0">
                       <div class="col-md-12 text-left">Comments</div>
-                  <form>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.comments}}" readonly >      
-                                                <div class="mdc-line-ripple"></div>
+                       <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
+                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
+                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
+                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.comments}}</textarea>              
+                                        <div class="mdc-line-ripple"></div>
+                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
                           </div>
-                        </div>
+                        </div> 
                        
                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
                           <div class="mdc-form-field">
@@ -425,17 +392,15 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>  
                 
                 <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">TotalSCore</div>
-                  <form>
+                      <div class="col-md-12 text-left">TotalScore</div>
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
                        
                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
                           <div class="mdc-text-field w-100 mdc-ripple-upgraded">
                           <input type="test" class="mdc-text-field__input" value="{{user.totalScore}}"   readonly ">   
                                                     <div class="mdc-line-ripple"></div>
@@ -451,7 +416,6 @@ dialog.close();
  
                       </div>
                     </div>
-                  </form>
                 </div>  
                 
                 
@@ -465,15 +429,13 @@ dialog.close();
                 </div>
                 </div>
                 </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
+                 </div>
+                
+              
+           
     <div class="mdl-dialog__actions">
       <button type="button" class="mdl-button">CLOSE</button>
-      <button type="button" class="mdl-button close">Disagree</button>
+      <!--  <button type="button" class="mdl-button close">Disagree</button>-->
     </div>
   </dialog>
                 </td>

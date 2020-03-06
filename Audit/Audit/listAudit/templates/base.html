@@ -172,10 +172,10 @@
 {% endfor %}
                         </ul>
                       </div>
-                      <span class="mdc-floating-label"> Pick a Team</span>
+                      <span class="mdc-floating-label">{{data1.team}}</span>
                       <div class="mdc-line-ripple"></div>
                     </div>
-                    {{data1.team}}
+                   
                   </div>
              <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
@@ -188,25 +188,78 @@
                           </li>                        
                         </ul>
                       </div>
-                      <span class="mdc-floating-label"> Pick a Member</span>
-                      <div class="mdc-line-ripple"></div>
+                      <span class="mdc-floating-label"> {{data1.member}} </span>
+                      <div class="mdc-line-ripple"></div> 
                     </div>
+                   
                     <div>
-                    {{data1.member}}
+                    	 	
                   </div>
                   </div>
-                                        <div class="mdc-text-field mr-2">
+                                      <!--   <div class="mdc-text-field mr-2">
                           <input type="week" class="mdc-text-field__input" name="weekStart" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label"> Audit Start Week</label>
-                          {{data1.weekStart}}
-                  </div>  
-                                 <div class="mdc-text-field mr-2">
+                          <label for="text-field-hero-input" class="mdc-floating-label"> {{data1.weekStart}}</label>
+                          
+                  </div>   
+                  
+                    <div class="mdc-text-field mr-2">
                           <input type="week" class="mdc-text-field__input" name="weekEnd" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label"> Audit End Week</label>
-                          {{data1.weekEnd}}
+                          <label for="text-field-hero-input" class="mdc-floating-label"> {{data1.weekEnd}}</label>
+                          
+                  </div>   --> 
+                                    <div class="mdc-text-field mr-2">
+                          <input type="week" class="mdc-text-field__input" value="{{data1.weekStart}}" name="weekStart" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> start date</label>
+                          
                         </div>
+                        <div class="mdc-text-field mr-2">
+                          <input type="week" class="mdc-text-field__input" value="{{data1.weekEnd}}" name="weekEnd" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> End Date</label>
+                          
+                        </div>
+                        
+                             
+                       
+                        
+                          <div class="mdc-text-field mr-2">
+                          <input type="" class="mdc-text-field__input" value="{{ count }}" name="" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Incident Count</label>
+                          
+                        </div>
+                        
+                        <div class="mdc-text-field mr-2">
+                          <input type="" class="mdc-text-field__input" id="txtAvgVal" value=" " name="" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Average Score</label>
+                          
+                        </div>
+                        <!--  <div class="mdc-text-field mr-2">
+                          <input type="" class="mdc-text-field__input" id="txtAvgVal" value="javascript:1+2" name="" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Average Score</label>
+                          
+                        </div>-->
+                        <script>
+                        k = 0;
+                        {% for user in data %}  
+                        k+={{user.totalScore}}; {% endfor %}
+                        p = k/{{count}};
+                       if(!isNaN(p))
+                       <!-- document.getElementById("txtAvgVal").value=p;-->
+                       x=Math.round(p);
+                       document.getElementById("txtAvgVal").value=x;
+                        </script>
+                        
+                        
+                        
+                      
+                        
+                         
                         
 
                           <div class="template-demo  mb-3 ml-2">

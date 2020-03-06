@@ -34,7 +34,7 @@ def getExcelData(form):
         
         key2 = [v.value for v in worksheet.row(row_number)]
         #row_data = {"incident":key2[0]}
-        row_data = {'incident':key2[0],'engineerName':key2[1],'auditedBy':key2[2],'auditDate':datetime(*xlrd.xldate_as_tuple(key2[3], 0)),'GeneralKnoledgeEmpathy':{'comment':key2[4],'YesNoPartial':key2[5],'score':key2[6]},'incidentManager':{'comments':key2[7],'yesNoPartial':key2[8],'score':key2[9]},'holdTime':{'yesNo':key2[10],'score':key2[11]},'correctCIitem':{'yesNo':key2[12],'score':key2[13]},'resolutionNotes':{'comments':key2[14],'yesNoPartial':key2[15],'score':key2[16]},'OLAbreach':{'yesNo':key2[17],'score':key2[18]},'comments':key2[19],'totalScore':key2[20],'scopeOfSOPKBCreation':key2[21]}
+        row_data = {'incident':key2[0],'engineerName':key2[1],'auditedBy':key2[2],'auditDate':datetime(*xlrd.xldate_as_tuple(key2[3], 0)),'GeneralKnoledgeEmpathy':{'comment':key2[4],'YesNoPartial':key2[5],'score':key2[6]},'incidentManager':{'comments':key2[7],'yesNoPartial':key2[8],'score':key2[9]},'holdTime':{'yesNo':key2[10],'score':key2[11]},'correctCIitem':{'yesNo':key2[12],'score':key2[13]},'resolutionNotes':{'comments':key2[14],'yesNoPartial':key2[15],'score':key2[16]},'OLAbreach':{'yesNo':key2[19],'score':key2[20]},'comments':key2[21],'totalScore':key2[22],'scopeOfSOPKBCreation':key2[21]}
        # for col_number, cell in enumerate(worksheet.row(row_number)):
        #     row_data[keys[col_number]] = cell.value
 
@@ -57,6 +57,11 @@ def dateReturn(obj1,obj2,obj3):
         return True
     else :
         return False
+def update_variable(value):
+    data = data+value
+    return data
+register.filter('update_variable', update_variable)
+
 def fetchData(request):
     tList = getTeam()
     form = QueryForm(request.POST)
@@ -67,7 +72,7 @@ def fetchData(request):
     #dat1=[] 
     dat1=form.cleaned_data    
         #cat=json.dumps(dat) 
-    return render(request, "basic-forms.html", {'form':'active','tList':tList,'data':dat,'data1':dat1})
+    return render(request, "basic-forms.html", {'form':'active','tList':tList,'data':dat,'data1':dat1,'count':len(dat)})
 def getTeam():
    workbook = xlrd.open_workbook(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))+'/TeamInfo.xlsx')
    worksheet = workbook.sheet_by_name('Sheet1')
