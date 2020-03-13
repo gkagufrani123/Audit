@@ -158,11 +158,11 @@
             <!-- span class="mdc-top-app-bar__title">Greetings Micky!</span-->
              <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
-                      <input type="hidden" name="team">
+                      <input type="hidden" name="team" value="{{data1.team}}">
                       <i class="mdc-select__dropdown-icon"></i>
                       <div class="mdc-select__selected-text"></div>
                       <div class="mdc-select__menu mdc-menu-surface demo-width-class"  onmouseout="resetData()">
-                        <ul class="mdc-list">
+                         <ul class="mdc-list">
                           <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
                           </li>
                           {% for mykey in tList %}
@@ -172,14 +172,20 @@
 {% endfor %}
                         </ul>
                       </div>
-                      <span class="mdc-floating-label">{{data1.team}}</span>
+                      <span class="mdc-floating-label">Team</span>
                       <div class="mdc-line-ripple"></div>
                     </div>
                    
                   </div>
-             <div class="template-demo">
+                  
+                  
+                  
+                  
+                  
+                  
+           <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
-                      <input type="hidden" name="member">
+                      <input type="hidden" name="member" value="{{data1.member}}">
                       <i class="mdc-select__dropdown-icon"></i>
                       <div class="mdc-select__selected-text" id="mdc-select__selected-text_id"></div>
                       <div class="mdc-select__menu mdc-menu-surface demo-width-class">
@@ -188,14 +194,44 @@
                           </li>                        
                         </ul>
                       </div>
-                      <span class="mdc-floating-label"> {{data1.member}} </span>
+                      <span class="mdc-floating-label"> member </span>
                       <div class="mdc-line-ripple"></div> 
                     </div>
                    
                     <div>
                     	 	
                   </div>
+                  </div>  
+             <!--    <div class="template-demo">
+                    <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
+                      <input type="hidden" name="member" value="{{data1.member}}">
+                      <i class="mdc-select__dropdown-icon"></i>
+                      <div class="mdc-select__selected-text" id="mdc-select__selected-text_id"></div>
+                      <div class="mdc-select__menu mdc-menu-surface demo-width-class">
+                        <ul class="mdc-list" id="memberList">
+                          <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true">
+                          </li>  
+                           
+                        
+                        </ul>
+                      </div>
+                      <span class="mdc-floating-label"> {{mykey1}} </span>
+                      <div class="mdc-line-ripple"></div> 
+                    </div>
+                   
+                    <div>
+                    	 	
                   </div>
+                  </div>-->
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
                                       <!--   <div class="mdc-text-field mr-2">
                           <input type="week" class="mdc-text-field__input" name="weekStart" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
@@ -314,9 +350,14 @@
   function getMembres(k){
 	  alist=[]
 	  {% for key,value in tList.items %}alist['{{key}}']='{{value }}';	  
-	  {% endfor %}	   
+	  {% endfor %}	  
+	 
 	  populateMembers(alist[k]);
+	 
   }
+  
+  
+	  
   function populateMembers(obj){
 	  kbj=obj.split("|");
 	  document.getElementById("memberList").innerHTML = "";
@@ -337,10 +378,14 @@
 	  }
 	  
   }
+
+{% if data1.team  %}
+getMembres('{{data1.team}}');
+{% endif%}
   function resetData(){
 	  k = document.getElementsByName("team");
 	  if(k[0].value!='')
-		  if(prev!=k[0].value){
+		  if(prev!=k[0].value ){
 	  		//console.log(k[0].value);
 	  		getMembres(k[0].value);
 	  		prev = k[0].value
