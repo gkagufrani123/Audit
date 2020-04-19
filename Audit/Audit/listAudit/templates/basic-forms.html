@@ -21,6 +21,222 @@
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
 	<!--script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script-->
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+      ok bhayyya just testing
+    </p>
+</figure>
+
+<script>
+names='';
+{% for user in data %}  
+names+="<br>{{user.engineerName}}";
+{% endfor %}
+namess1=names.split("<br>");
+namess1.shift();
+names=namess1;
+
+var avg1 = [];
+var score=[];
+var incicounts=[];
+avaragee=0;
+srores=0;
+incicount=0;
+var totalgroupscore = [];
+       {% for user in data %}  
+       if({{user.incidentCount}} == 1)
+       	{
+       	avaragee={{user.score}}/{{user.incidentCount}};
+       	scores={{user.score}};
+       	score.push(scores);
+       	avg1.push(avaragee);
+       	incicount={{user.incidentCount}};
+       	incicounts.push(incicount);
+       	}
+       else{
+   	avaragee={{user.score}}/{{user.incidentCount}};
+   	avg1.push(avaragee);
+   	scores={{user.score}};
+   	score.push(scores);
+	incicount={{user.incidentCount}};
+   	incicounts.push(incicount);
+       }
+       {% endfor %}
+
+
+
+
+
+Highcharts.chart('container', {
+    chart: {
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Average Engineer',
+        align: 'left'
+    },
+    xAxis: [{
+        categories: [names],
+        crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
+        title: {
+            text: 'TotalScore',
+            style: {
+                color: Highcharts.getOptions().colors[2]
+            }
+        },
+        opposite: true
+
+    }, 
+    { // Secondary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: 'EngineersIncidentCounts',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+            format: '{value} ',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        }
+
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 80,
+        verticalAlign: 'top',
+        y: 55,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || // theme
+            'rgba(255,255,255,0.25)'
+    },
+    series: [
+    {
+        name: 'avarage',
+        type: 'spline',
+        data: [avg1],
+        tooltip: {
+            valueSuffix: ' '
+        }
+    },
+    {
+        name: 'totalscore',
+        type: 'spline',
+        data: [score],
+        tooltip: {
+            valueSuffix: ' '
+        }
+    },    
+    {
+        name: 'IncidentCounts',
+        type: 'column',
+        yAxis: 1,
+        data: [incicounts],
+        tooltip: {
+            valueSuffix: ' '
+        }
+
+    }],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    floating: false,
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    x: 0,
+                    y: 0
+                },
+                yAxis: [{
+                    labels: {
+                        align: 'right',
+                        x: 0,
+                        y: -6
+                    },
+                    showLastLabel: false
+                }, {
+                    labels: {
+                        align: 'left',
+                        x: 0,
+                        y: -6
+                    },
+                    showLastLabel: false
+                }, {
+                    visible: false
+                }]
+            }
+        }]
+    }
+});
+
+
+
+
+
+
+
+vs = 0;
+names='';
+
+  {% for user in data %}  
+  vs+={{user.score}}; 
+  /*names+="<br>{{user.engineerName}}";*/
+  {% endfor %}
+  p = vs/txt;
+  //p2=groupscore/txt
+ if(!isNaN(p))
+  x=Math.round(p);
+ document.getElementById("mdb2").value=x; 
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script>
   function showDialog(id){
     var dialog = document.querySelector('#mdl-dialog-'+id);
@@ -34,6 +250,8 @@ dialog.close();
     });
   }
   </script>
+  
+  {% if data1.member %}
 <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
@@ -42,7 +260,8 @@ dialog.close();
                 <th>AUdit By</th>
                 <th>Audit Date</th>
                 <th>Action</th>
-            </tr>
+            
+            
             
         </thead>
         <tbody>
@@ -417,14 +636,6 @@ dialog.close();
                       </div>
                     </div>
                 </div>  
-                
-                
-                
-                
-                
-                
-                
-                 
                 </div>
                 </div>
                 </div>
@@ -442,5 +653,44 @@ dialog.close();
             </tr>
 {% endfor %}
       </tbody>
+    </table>  
+{% else %}
+<table id="example" class="table table-striped table-bordered" style="width:30%">
+        <thead>
+            <tr>
+                <th>Engineer</th>
+                 <th>groupcount</th>
+                 <th>group score</th>
+                
+                 
+        </thead>
+  <tbody>
+  {% for user in data %}
+    <tr>
+                <td>{{user.engineerName}}</td>
+                <td>{{user.incidentCount}}</td>
+                <td>{{user.score}}</td>
+                             
+ </tr>
+{% endfor %}
+      </tbody>
     </table>
-    {% endblock %}      
+    {% endif %} 
+     <script> 
+                      v = 0;
+                        {% for user in data %}  
+                        v+={{user.score}}; 
+                        {% endfor %}
+                      //  p = v/{{user.incidentCount}};
+                     
+                         x=Math.round(p);
+                       document.getElementById("txt2").value=x;
+                        </script>
+     
+                
+ 
+ 
+  
+
+    {% endblock %}   
+       

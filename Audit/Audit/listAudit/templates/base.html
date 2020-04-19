@@ -24,6 +24,12 @@
   <!-- End layout styles -->
   <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
 </head>
+
+
+
+
+
+
 <body>
 <script src="{% static 'assets/js/preloader.js' %}"></script>
   <div class="body-wrapper">
@@ -182,10 +188,10 @@
                   
                   
                   
-                  
+             
            <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
-                      <input type="hidden" name="member" value="{{data1.member}}">
+                      <input type="hidden" name="member" value="{{data.member}}">
                       <i class="mdc-select__dropdown-icon"></i>
                       <div class="mdc-select__selected-text" id="mdc-select__selected-text_id"></div>
                       <div class="mdc-select__menu mdc-menu-surface demo-width-class">
@@ -202,6 +208,12 @@
                     	 	
                   </div>
                   </div>  
+                  
+                  
+                  
+                  
+                  
+                  
              <!--    <div class="template-demo">
                     <div class="mdc-select demo-width-class" data-mdc-auto-init="MDCSelect" style="margin-top:0px">
                       <input type="hidden" name="member" value="{{data1.member}}">
@@ -260,27 +272,48 @@
                         
                              
                        
-                        
-                          <div class="mdc-text-field mr-2">
+                      
+                         <!--   <div class="mdc-text-field mr-2">
                           <input type="" class="mdc-text-field__input" value="{{ count }}" name="" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
                           <label for="text-field-hero-input" class="mdc-floating-label"> Incident Count</label>
-                          
-                        </div>
-                        
+                          </div>-->
+                   {% if data1.member %}
+                           <div class="mdc-text-field mr-2">
+                          <input type="" class="mdc-text-field__input" value="{{ count }}" name="" id="text-field-hero-input">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Incident Count</label>
+                          </div>
+                   {% else %}            
+                         <div class="mdc-text-field mr-2">
+                          <input type="" class="mdc-text-field__input" value={{txt}} name="" id="mdb">
+                          <div class="mdc-line-ripple"></div>
+                          <label for="text-field-hero-input" class="mdc-floating-label"> Incident Countbhayya</label>
+                          </div>
+                   {% endif %} 
+                    {% if data1.member %}
                         <div class="mdc-text-field mr-2">
                           <input type="" class="mdc-text-field__input" id="txtAvgVal" value=" " name="" id="text-field-hero-input">
-                          <div class="mdc-line-ripple"></div>
-                          <label for="text-field-hero-input" class="mdc-floating-label"> Average Score</label>
-                          
-                        </div>
+                                <div class="mdc-line-ripple"></div>
+                                <label for="text-field-hero-input" class="mdc-floating-label"> Average Score</label>
+                                 </div>
+                       {% else %}   
+                                 <div class="mdc-text-field mr-2">
+                                 <input type="" class="mdc-text-field__input" id="mdb2" value={{x}}>
+                                <div class="mdc-line-ripple"></div>
+                                <label for="text-field-hero-input" class="mdc-floating-label"> Average Score bhayya</label>
+                                 </div>
+                                  {% endif %} 
+                      
+                        
                         <!--  <div class="mdc-text-field mr-2">
                           <input type="" class="mdc-text-field__input" id="txtAvgVal" value="javascript:1+2" name="" id="text-field-hero-input">
                           <div class="mdc-line-ripple"></div>
                           <label for="text-field-hero-input" class="mdc-floating-label"> Average Score</label>
                           
                         </div>-->
-                        <script>
+                     <script>
+                 
                         k = 0;
                         {% for user in data %}  
                         k+={{user.totalScore}}; {% endfor %}
@@ -292,8 +325,24 @@
                         </script>
                         
                         
+                         <script>
+                        k = 0;
+                        {% for user in data %}  
+                        k+={{user.incidentCount}}; {% endfor %}
+                        txt=k
+                       document.getElementById("mdb").value=txt;
+                        </script>
                         
-                      
+                     <script> 
+                      vs = 0;
+                        {% for user in data %}  
+                        vs+={{user.score}}; 
+                        {% endfor %}
+                        p = vs/txt;
+                       if(!isNaN(p))
+                        x=Math.round(p);
+                       document.getElementById("mdb2").value=x;
+                        </script>
                         
                          
                         
@@ -407,5 +456,7 @@ getMembres('{{data1.team}}');
   <!-- Custom js for this page-->
   <script src="{% static 'assets/js/dashboard.js' %}"></script>
   <!-- End custom js for this page-->
+  
+  
 </body>
 </html> 
