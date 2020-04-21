@@ -1,27 +1,7 @@
   {% extends 'base.html' %}
   {% load static %}
 {% block content %}
-<!-- Start -->
-	<!-- link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=c863b7da7e72b0e94c16b81c38293467">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
-	<!-- link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css"-->
-	<!-- link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap.min.css"-->
-
-	<!-- script type="text/javascript" src="/media/js/site.js?_=a64810efc82bfd3b645784011efa5963"></script>
-	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=extensions%2Fbuttons%2Fexamples%2Fstyling%2Fbootstrap.html" async></script>
-	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.bootstrap.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
-	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
-	<!--script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script-->
-	<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -35,88 +15,75 @@
 </figure>
 
 <script>
-names='';
-{% for user in data %}  
-names+="<br>{{user.engineerName}}";
+names=[];
+avg=[]
+inc=[]
+{% for user in data %}
+ names.push("{{user.engineerName}}");
+ inc.push({{user.incidentCount}});
+ avg.push({{user.score}}/{{user.incidentCount}});
 {% endfor %}
-namess1=names.split("<br>");
-namess1.shift();
-names=namess1;
-
-var avg1 = [];
-var score=[];
-var incicounts=[];
-avaragee=0;
-srores=0;
-incicount=0;
-var totalgroupscore = [];
-       {% for user in data %}  
-       if({{user.incidentCount}} == 1)
-       	{
-       	avaragee={{user.score}}/{{user.incidentCount}};
-       	scores={{user.score}};
-       	score.push(scores);
-       	avg1.push(avaragee);
-       	incicount={{user.incidentCount}};
-       	incicounts.push(incicount);
-       	}
-       else{
-   	avaragee={{user.score}}/{{user.incidentCount}};
-   	avg1.push(avaragee);
-   	scores={{user.score}};
-   	score.push(scores);
-	incicount={{user.incidentCount}};
-   	incicounts.push(incicount);
-       }
-       {% endfor %}
-
-
-
-
-
 Highcharts.chart('container', {
     chart: {
         zoomType: 'xy'
     },
     title: {
-        text: 'Average Engineer',
+        text: 'Average Monthly Weather Data for Tokyo',
+        align: 'left'
+    },
+    subtitle: {
+        text: 'Source: WorldClimate.com',
         align: 'left'
     },
     xAxis: [{
-        categories: [names],
+        categories: names,
         crosshair: true
     }],
     yAxis: [{ // Primary yAxis
         labels: {
-            format: '{value}',
+            format: '{value}°C',
             style: {
                 color: Highcharts.getOptions().colors[2]
             }
         },
         title: {
-            text: 'TotalScore',
+            text: 'Temperature',
             style: {
                 color: Highcharts.getOptions().colors[2]
             }
         },
         opposite: true
 
-    }, 
-    { // Secondary yAxis
+    }, { // Secondary yAxis
         gridLineWidth: 0,
         title: {
-            text: 'EngineersIncidentCounts',
+            text: 'Rainfall',
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
         },
         labels: {
-            format: '{value} ',
+            format: '{value} mm',
             style: {
                 color: Highcharts.getOptions().colors[0]
             }
         }
 
+    }, { // Tertiary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: 'Sea-Level Pressure',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        labels: {
+            format: '{value} mb',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        opposite: true
     }],
     tooltip: {
         shared: true
@@ -132,30 +99,26 @@ Highcharts.chart('container', {
             Highcharts.defaultOptions.legend.backgroundColor || // theme
             'rgba(255,255,255,0.25)'
     },
-    series: [
-    {
-        name: 'avarage',
-        type: 'spline',
-        data: [avg1],
-        tooltip: {
-            valueSuffix: ' '
-        }
-    },
-    {
-        name: 'totalscore',
-        type: 'spline',
-        data: [score],
-        tooltip: {
-            valueSuffix: ' '
-        }
-    },    
-    {
-        name: 'IncidentCounts',
+    series: [{
+        name: 'Average Score',
         type: 'column',
         yAxis: 1,
-        data: [incicounts],
+        data: avg,
         tooltip: {
-            valueSuffix: ' '
+            valueSuffix: ' mm'
+        }
+
+    }, {
+        name: 'Incidents ',
+        type: 'spline',
+        yAxis: 2,
+        data: inc,
+        marker: {
+            enabled: false
+        },
+        dashStyle: 'shortdot',
+        tooltip: {
+            valueSuffix: ' mb'
         }
 
     }],
@@ -195,26 +158,6 @@ Highcharts.chart('container', {
     }
 });
 
-
-
-
-
-
-
-vs = 0;
-names='';
-
-  {% for user in data %}  
-  vs+={{user.score}}; 
-  /*names+="<br>{{user.engineerName}}";*/
-  {% endfor %}
-  p = vs/txt;
-  //p2=groupscore/txt
- if(!isNaN(p))
-  x=Math.round(p);
- document.getElementById("mdb2").value=x; 
-
-
 </script>
 
 
@@ -222,475 +165,4 @@ names='';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script>
-  function showDialog(id){
-    var dialog = document.querySelector('#mdl-dialog-'+id);
-    var showDialogButton = document.querySelector('#show-dialog-'+id);
-    if (! dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-    }
-      dialog.showModal();
-	    dialog.querySelector('.mdl-button').addEventListener('click', function() {
-dialog.close();
-    });
-  }
-  </script>
-  
-  {% if data1.member %}
-<table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Incident</th>
-                <th>Engineer{{data1.team}}</th>
-                <th>AUdit By</th>
-                <th>Audit Date</th>
-                <th>Action</th>
-            
-            
-            
-        </thead>
-        <tbody>
-            
-{% for user in data %}
-    <tr>
-                <td>{{user.incident}}</td>
-                <td>{{user.engineerName}}</td>
-                <td>{{user.auditedBy}}</td>
-                <td>{{user.auditDate|date:'D, d M,Y'}}</td>
-                <!-- td>{{user.incidentManager.comments}}</td-->
-                <td><button id="show-dialog" type="button" class="btn btn-info btn-lg" onclick="showDialog({{ forloop.counter }})">Details</button>
-  <dialog id="mdl-dialog-{{ forloop.counter }}" class="mdl-dialog">
-    <h4 class="mdl-dialog__title">Incident :{{user.incident}}</h4>
-    <div class="mdl-dialog__content">
-    <div class="mdc-card">
-                  <h6 class="card-title"></h6>
-                  <div class="template-demo">
-              
-           <div class="mdc-layout-grid ">
-            <div class="mdc-layout-grid__inner">
-              <!--div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>-->
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
-             
-                <div class="mdc-card p-0">
-                               <div class="col-md-12 text-left">Details</div>
-                
-                    <div class="mdc-layout-grid">
-                    
-                      <div class="mdc-layout-grid__inner">
-                      
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded"> 
-                          
-                          <input type="test" class="mdc-text-field__input" value="{{user.incident}}" readonly >         
-                                             <div class="mdc-line-ripple"></div>
-                            
-                            <label for="text-field-hero-input" class="mdc-floating-label">Incident</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.engineerName}}" readonly> 
-                                                     <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">engineerName</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-5">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                                                      <input type="test" class="mdc-text-field__input" value="{{user.auditedBy}}" readonly ">
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">auditedBy</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-7">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.auditDate}}" readonly ">  
-                                                 <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">dateOfAudit</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                      <div class="mdc-card p-0">
-                  <div class="col-md-12 text-left">Greeting/Acknowledgement/Empathy</div>
-                      
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.YesNoPartial}}" readonly >    
-                                                  <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        
-                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                             <input type="test" class="mdc-text-field__input" value="{{user.GeneralKnoledgeEmpathy.score}}" readonly >
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
-                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
-                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.GeneralKnoledgeEmpathy.comment}}</textarea>              
-                                        <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comment</label>
-                          </div>
-                        </div> 
-                       
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                        <div class="mdc-card p-0">
-                   <div class="col-md-12 text-left">IncidentManagement</div>
-                        
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                        
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.yesNoPartial}}" readonly ">       
-                                               <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.incidentManager.score}}" readonly ">    
-                                                  <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                         <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
-                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
-                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.incidentManager.comments}}</textarea>              
-                                        <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comment</label>
-                          </div>
-                        </div> 
-                       
-                        
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                <div class="mdc-card p-0">
-                  <div class="col-md-12 text-left">ResolutionNotes(Issue desk, Resolution provided)</div>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                      
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.yesNoPartial}}"  readonly ">      
-                                                <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.resolutionNotes.score}}" readonly ">   
-                            <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
-                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
-                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.resolutionNotes.comments}}</textarea>              
-                                        <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
-                          </div>
-                        </div> 
-                      
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                        <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">HoldTime</div>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.yesNo}}" readonly "> 
-                                                     <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.holdTime.score}}" readonly ">  
-                                                    <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                       
-                
-              </div>
-            </div>
-          </div>
-                          
-     
-              
-
-                    </div>
-                               <div class="template-demo">
-                  
-              
-           <div class="mdc-layout-grid ">
-            <div class="mdc-layout-grid__inner">
-              <!--div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-1-tablet"></div>-->
-              <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet">
-             
-                       <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">OLABreach(Response-5,Update-10&Resolution-10)</div>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.yesNo}}" readonly ">   
-                                                   <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.OLAbreach.score}}" readonly ">    
-                                                  <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-            <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">CorrectCI subcat</div>
-
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.yesNo}}" readonly>              
-                                        <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">acheived</label>
-                          </div>
-                        </div>
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.correctCIitem.score}}" readonly>   
-                                                   <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">score</label>
-                          </div>
-                        </div>
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div> 
-                
-               
-               <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">Comments</div>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                      
-                       <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12-desktop">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded" style="height: 100px;heght: 60px;--mdc-ripple-fg-size:158px;--mdc-ripple-fg-scale:1.75828;--mdc-ripple-fg-translate-start:182.463px, -55.7px;--mdc-ripple-fg-translate-end:53px, -56.5px;">
-                          <!-- input type="test" class="mdc-text-field__input" value="{{user.scopeOfSOPKBCreation}}" readonly-->
-                          <textarea rows="5" cols=""  class="mdc-text-field__input"  readonly>{{user.comments}}</textarea>              
-                                        <div class="mdc-line-ripple"></div>
-                            <label for="text-field-hero-input" class="mdc-floating-label">comments</label>
-                          </div>
-                        </div> 
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>  
-                
-                <div class="mdc-card p-0">
-                      <div class="col-md-12 text-left">TotalScore</div>
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                       
-                      
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6">
-                          <div class="mdc-text-field w-100 mdc-ripple-upgraded">
-                          <input type="test" class="mdc-text-field__input" value="{{user.totalScore}}"   readonly ">   
-                                                    <div class="mdc-line-ripple"></div>
-                          </div>
-                        </div>
-                       
-                        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                          <div class="mdc-form-field">
-                           
-                           
-                          </div>
-                        </div>
- 
-                      </div>
-                    </div>
-                </div>  
-                </div>
-                </div>
-                </div>
-                </div>
-                 </div>
-                
-              
-           
-    <div class="mdl-dialog__actions">
-      <button type="button" class="mdl-button">CLOSE</button>
-      <!--  <button type="button" class="mdl-button close">Disagree</button>-->
-    </div>
-  </dialog>
-                </td>
-            </tr>
-{% endfor %}
-      </tbody>
-    </table>  
-{% else %}
-<table id="example" class="table table-striped table-bordered" style="width:30%">
-        <thead>
-            <tr>
-                <th>Engineer</th>
-                 <th>groupcount</th>
-                 <th>group score</th>
-                
-                 
-        </thead>
-  <tbody>
-  {% for user in data %}
-    <tr>
-                <td>{{user.engineerName}}</td>
-                <td>{{user.incidentCount}}</td>
-                <td>{{user.score}}</td>
-                             
- </tr>
-{% endfor %}
-      </tbody>
-    </table>
-    {% endif %} 
-     <script> 
-                      v = 0;
-                        {% for user in data %}  
-                        v+={{user.score}}; 
-                        {% endfor %}
-                      //  p = v/{{user.incidentCount}};
-                     
-                         x=Math.round(p);
-                       document.getElementById("txt2").value=x;
-                        </script>
-     
-                
- 
- 
-  
-
-    {% endblock %}   
-       
+    {% endblock %}
