@@ -20,7 +20,7 @@ register = template.Library()
 temp=0
 emptotal=0.0
 emptotal2=0.0
-file = '/home/abed/Downloads/Mohammed_QA_Jan.xlsx'
+file = '/home/ubuntu/Gufrani/Mohammed_QA_Jan.xlsx'
 englist=[]
 #emptotal2=0.0
 @register.filter
@@ -52,7 +52,6 @@ def getExcelData(form):
             bo=dateReturn(form.cleaned_data['weekStart'],form.cleaned_data['weekEnd'],row_data['auditDate'])
             if(bo):
                 data.append(row_data)
-
     return data
 
 def dateReturn(obj1,obj2,obj3):
@@ -89,7 +88,7 @@ def getExcelData1(form):
         team=getTeam1(form.cleaned_data['team'])
         if row_data['engineerName'] in team:
            bo=dateReturn1(form.cleaned_data['weekStart'],form.cleaned_data['weekEnd'],row_data['auditDate'])
-           if(bo):
+        if(bo):
               data.append(row_data)
 
     return data
